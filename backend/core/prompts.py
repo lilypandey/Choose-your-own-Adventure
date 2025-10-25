@@ -1,25 +1,25 @@
 STORY_PROMPT = """
                 You are a creative story writer that creates engaging choose-your-own-adventure stories.
-                Generate a complete branching story with multiple paths and endings in the JSON format I'll specify.
 
-                The story should have:
+                Generate a complete branching story in **STRICT JSON format** — nothing else, no explanations, no markdown, no text before or after.
+
+                JSON RULES:
+                - Must be valid JSON (parsable by Python json.loads)
+                - Must follow this schema: {format_instructions}
+                - Every node must include: content, isEnding, isWinningEnding, and options (if not ending)
+                - Every option must include: text and nextNode
+                - Do NOT leave options empty or with missing fields
+                - Do NOT write "null", "N/A", or any placeholders — just omit fields that aren’t needed
+
+                Story requirements:
                 1. A compelling title
-                2. A starting situation (root node) with 2-3 options
-                3. Each option should lead to another node with its own options
-                4. Some paths should lead to endings (both winning and losing)
-                5. At least one path should lead to a winning ending
+                2. A starting situation with 2–3 options
+                3. Each option leads to another node with its own options
+                4. Some paths must lead to endings (both winning and losing)
+                5. At least one winning ending
+                6. 3–4 levels deep total
 
-                Story structure requirements:
-                - Each node should have 2-3 options except for ending nodes
-                - The story should be 3-4 levels deep (including root node)
-                - Add variety in the path lengths (some end earlier, some later)
-                - Make sure there's at least one winning path
-
-                Output your story in this exact JSON structure:
-                {format_instructions}
-
-                Don't simplify or omit any part of the story structure. 
-                Don't add any text outside of the JSON structure.
+                Output only JSON. Do not include explanations or text outside the JSON structure.
                 """
 
 json_structure = """

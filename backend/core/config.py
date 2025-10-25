@@ -9,7 +9,6 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     ALLOWED_ORIGINS: str = ""
-    OPENAI_API_KEY: str
     OPENROUTER_API_KEY: str
 
     @field_validator("ALLOWED_ORIGINS")
